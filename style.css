@@ -1,0 +1,34 @@
+body {
+  background-color: blanchedalmond;
+  width: 100%;
+  text-align: center;
+  font-family: "Segoe UI", "Yu Gothic", sans-serif, ;
+}
+
+#content {
+  width: 80%;
+  text-align: left;
+  margin: 0 10%;
+  box-sizing: border-box;
+}
+
+p {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  height: 8em;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: royalblue;
+  border-width: 1.5px;
+}
+
+button, input {
+  width: 20%;
+  height: 2em;
+  margin-right: 5%;
+}

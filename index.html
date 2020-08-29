@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pop'nTube 譜面データ変換ツール</title>
+  </head>
+  <body>
+    <h1>Pop'nTube 譜面データ変換ツール</h1>
+    <hr />
+    <div id="content">
+      <p>
+        Pop'nTubeの譜面データを<a href="https://superkuppabros.github.io/danoni-editor"
+          >Dancing☆Onigiri HTML5エディター</a
+        >のセーブデータに変換します。<br />
+        譜面データはHTML5版のPop'nTubeのソースから取得するか、<a
+          href="https://github.com/superkuppabros/scrp_pt"
+          >Pop'nTube 譜面バックアップスクリプト</a
+        >から取得してください。
+      </p>
+      <form>
+        <p>変換するデータを入力してください。</p>
+        <div>
+          <textarea id="input-stage-data"></textarea>
+        </div>
+        <button type="button" onclick="convert()">Convert</button>
+        <input type="reset" value="Reset" />
+        <div>↓</div>
+        <p>変換後データ</p>
+        <div>
+          <textarea id="output-save-data" readonly></textarea>
+        </div>
+        <button type="button" onclick="copy()">Copy</button>
+      </form>
+    </div>
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+  <script>
+    function convert() {
+      const baseStr = document.getElementById("input-stage-data").value;
+      const saveData = makeSaveData(baseStr);
+      document.getElementById("output-save-data").value = saveData;
+    }
+
+    function copy() {
+      const saveData = document.getElementById("output-save-data").value;
+      navigator.clipboard.writeText(saveData);
+    }
+  </script>
+</html>
