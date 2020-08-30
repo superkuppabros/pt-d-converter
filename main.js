@@ -13,9 +13,12 @@ function baseStrToZeroNumArr(baseStr) {
   if (tempArr[0].length == 0) tempArr.shift();
   const resArr = [];
   tempArr.forEach((str) => {
-    const [zeros, ones] = str.split("l");
+    const arr = str.split("l");
+    const overL = arr.length - 2;
+    const [zeros, ones] = arr.slice(0, 2);
     const zerosNum = zeros.length == 0 ? 1 : parseInt(zeros, 20);
     resArr.push(zerosNum);
+    if (overL > 0) resArr.push(new Array(overL).fill(0));
     if (ones && ones.length !== 0) {
       const onesNum = parseInt(ones, 20) - 1;
       resArr.push(new Array(onesNum).fill(0));
@@ -106,6 +109,6 @@ const makeSaveData = (baseStr) => {
     const saveData = convertedArrToSaveData(convertedArr);
     return saveData;
   } catch {
-    return "変換できませんでした。"
+    return "変換できませんでした。";
   }
 };
